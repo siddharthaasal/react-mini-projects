@@ -17,7 +17,13 @@ function App() {
   }
 
   useEffect(() => {
-    handleQuery();
+    // debouncing to minimize api calls
+    const callApi = setTimeout(() => {
+      handleQuery();
+    }, 400);
+
+    return () => clearTimeout(callApi);
+
   }, [userQuery])
 
   return (
