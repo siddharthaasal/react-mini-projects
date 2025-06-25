@@ -1,0 +1,50 @@
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+
+h2 {
+  margin-top: 36px;
+}
+
+.main-container {
+  display: block;
+  margin: auto;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.search-bar {
+  width: 500px;
+  height: 30px;
+  background-color: whitesmoke;
+  color: black;
+  padding: 2px;
+  border: solid 2px black;
+}
+
+.suggestions-container {
+  width: 500px;
+  margin: auto;
+  padding: 2px;
+  border: solid 2px black;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: whitesmoke;
+  color: black;
+  padding: 2px;
+  border: solid 2px black;
+  text-align: left;
+}
+
+span {
+  color: black;
+  display: block;
+  padding: 2px;
+}
+
+span:hover {
+  cursor: pointer;
+  background-color: beige;
+}
