@@ -7,13 +7,24 @@ function App() {
 
   const [userQuery, setUserQuery] = useState("");
   const [queryResults, setQueryResults] = useState([]);
+  const [cachedQueryResults, setCachedQueryResults] = useState({}); //{userQuery: res[]}
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   async function handleQuery() {
+
+    // check if the input's results are cached
+    if (cachedQueryResults[userQuery]) {
+      console.log("Returned from cache", userQuery);
+      setQueryResults(cachedQueryResults[userQuery]);
+      return;
+    }
+
+    console.log("API call made for", userQuery);
+    console.log(cachedQueryResults);
     const data = await fetch(`https://dummyjson.com/recipes/search?q=${userQuery}`);
     const parsedData = await data.json();
+    setCachedQueryResults(prev => ({ ...prev, [userQuery]: parsedData?.recipes }));
     setQueryResults(parsedData?.recipes);
-    console.log(parsedData?.recipes);
   }
 
   useEffect(() => {
